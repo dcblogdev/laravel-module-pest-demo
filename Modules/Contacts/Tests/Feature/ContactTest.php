@@ -1,12 +1,10 @@
 <?php
 
-use function Pest\Faker\faker;
+use App\Http\Livewire\Counter;
+use function Pest\Livewire\livewire;
 
-it('generates a name using faker', function () {
-    $name = faker()->name;
-
-    // Same as:
-    $name = $this->faker()->name;
-
-    assertIsString($name);
+it('can be incremented', function () {
+    $this->livewire(Counter::class)
+        ->call('increment')
+        ->assertSee(1);
 });
